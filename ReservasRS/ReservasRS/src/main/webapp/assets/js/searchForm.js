@@ -18,16 +18,19 @@ searchForm.prototype.setUpForm = function() {
   this.sForm.validate();
   //this.setDatePicker();
   this.setAerolineasSelect();
+
   this.setCiudadesSelect();
   this.sForm.submit(function() {
     console.log(that.sForm.valid());
     if (that.sForm.valid()) {
+
       that.createSearchObject();
       this.vuelosResult = todosVuelos;
     }
     return false;
   });
 }
+
 searchForm.prototype.setCiudadesSelect = function(){
   $.ajax({
     url: "/ReservasRS/webresources/aeropuerto",
@@ -66,11 +69,14 @@ searchForm.prototype.createSearchObject = function() {
 }
 searchForm.prototype.filtrarVuelos = function() {
   this.vuelosResult = todosVuelos;
+
   this.vuelosResult = this.vuelosResult.filter(this.filterFecha);
   this.vuelosResult = this.vuelosResult.filter(this.filterOrigen);
   this.vuelosResult = this.vuelosResult.filter(this.filterDestino);
   this.vuelosResult = this.vuelosResult.filter(this.filterPrecio);
+
   if (this.vueloSearch.codAerolinea != "empty")
+
     this.vuelosResult = this.vuelosResult.filter(this.filterAerolinea);
   //
   /*if(this.vueloSearch.horaIda==""){
@@ -78,6 +84,7 @@ searchForm.prototype.filtrarVuelos = function() {
   }*/
   console.log(this.vuelosResult);
 }
+
 searchForm.prototype.filterFecha = function(element) {
   return element.fecha == searchFlightForm.vueloSearch.fechaIda;
 }
@@ -92,6 +99,7 @@ searchForm.prototype.filterPrecio = function(element) {
 }
 searchForm.prototype.filterDestino = function(element) {
   return element.numVuelo.codAerolinea.codAerolinea == searchFlightForm.vueloSearch.codAerolinea;
+
 }
 searchForm.prototype.setAerolineasSelect = function() {
   $.ajax({
@@ -123,10 +131,12 @@ searchForm.prototype.setDatePicker = function() {
     $("#checkOut").prop("disabled", false);
     $("#checkOut").datepicker("option", "minDate", that.getDate(this));
   });
+
   $("#checkIn").datepicker('option', 'dateFormat', 'dd/mm/yy')
   $("#checkOut").prop("disabled", true)
     .datepicker({
       dateFormat: "dd/MM/yy",
+
       defaultDate: "+1W",
       showAnim: "slideDown",
       changeMonth: true,
@@ -134,6 +144,7 @@ searchForm.prototype.setDatePicker = function() {
     }).on("change", function() {
       $("#checkIn").datepicker("option", "maxDate", that.getDate(this));
     });
+
 
   $("checkInTime").timepicker();
   $("checkOutTime").timepicker();

@@ -48,7 +48,9 @@ function showOffers(arrayVuelos) {
     rowReservar = document.createElement("tr");
     $(rowReservar).append("<td><input type='text' placeholder='Nombre' id='nombre"+idVuelo+"' /></td><td><input type='text' placeholder='Apellidos' id='apellidos"+idVuelo+"' /></td>"+
       "<td><input type='text' placeholder='Telefono' id='telefono"+idVuelo+"' /></td><td><input type='text' placeholder='Tarjeta' id='tarjeta"+idVuelo+"' /></td> "+
+
       "<td><button onclick='searchFlightForm.comprarVuelo("+idVuelo+","+arrayVuelos[i].numVuelo.precio+")'>Comprar</button></td>");
+
     $(rowReservar).addClass("reservarTR");
     thisTable.append(rowReservar);
   }
@@ -68,8 +70,10 @@ function showGenericOffers() {
       todosVuelos[i].numVuelo.precio + "€</td>");
     thisTable.append(row);
   }
+
 }
 
 function enviarComentario(){
   $("#commentForm").html("<h1>Gracias por su comentario</h1>");
+
 }
