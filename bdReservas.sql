@@ -16,7 +16,7 @@ create table ciudad (
 drop table if exists aeropuerto;
 create table aeropuerto (
     cod_aeropuerto  char(3) primary key NOT NULL,#el código de aeropuertos es de 3 letras y no es único, pero como es un trabajo con fechas, no voy a hacer florituras.
-    nombre  varchar(30) NOT NULL,
+    nombre  varchar(40) NOT NULL,
     categoria   integer NOT NULL,
     id_ciudad   smallint(6) NOT NULL
 );
