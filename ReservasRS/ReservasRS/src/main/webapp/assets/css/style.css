@@ -324,3 +324,9 @@ form input{
 .reservarTR{
   display: none;
 }
+.failValidation{
+  border: 1pt solid red;
+}
+#offers{
+  color:white;
+}
