@@ -280,3 +280,19 @@ tr:nth-child(even)
   color:#fff;
   padding:10px;
 }
+
+#FormReserva input{
+  color: white !important;  
+}
+.reservarTR{
+  display: none;
+}
+.failValidation{
+  border: 1pt solid red;
+}
+#offers{
+  width: 100%;
+}
+#offers input{
+  width: 100%;
+}
