@@ -1,10 +1,3 @@
-/*!
- * Bootstrap v3.1.1 (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-/*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -274,7 +267,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.42857143;
   color: #333;
   background-color: #fff;
@@ -2363,6 +2356,7 @@ input[type="button"].btn-block {
 .collapse {
   display: none;
 }
+
 .collapse.in {
   display: block;
 }
@@ -3123,9 +3117,9 @@ input[type="button"].btn-block {
     right: 0;
     left: auto;
   }
-  .navbar-right .dropdown-menu-left {
-    right: auto;
-    left: 0;
+  .navbar-left .dropdown-menu-left {
+    left: auto;
+    right: 0;
   }
 }
 .btn-group,
@@ -3664,11 +3658,29 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
 }
+
+.navbar-collapse-flag {
+  max-height: 340px;
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
 .navbar-collapse.in {
   overflow-y: auto;
 }
-@media (min-width: 768px) {
-  .navbar-collapse {
+@media (min-width: 768px) 
+{
+  .navbar-collapse 
+  {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+  }
+  .navbar-collapse-flag 
+  {
     width: auto;
     border-top: 0;
     box-shadow: none;
@@ -3765,6 +3777,19 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
 .navbar-toggle:focus {
   outline: none;
 }
@@ -3824,9 +3849,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
-  .navbar-nav.navbar-right:last-child {
-    margin-right: -15px;
-  }
+
 }
 @media (min-width: 768px) {
   .navbar-left {
@@ -3901,6 +3924,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-form.navbar-right:last-child {
     margin-right: -15px;
   }
+  .navbar-form.navbar-left:last-child {
+    margin-left: -15px;
+  }
 }
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
@@ -3935,6 +3961,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-text.navbar-right:last-child {
     margin-right: 0;
+  }
+  .navbar-text.navbar-left:last-child {
+    margin-left: 0;
   }
 }
 .navbar-default {
@@ -5782,4 +5811,3 @@ button.close {
     display: none !important;
   }
 }
-/*# sourceMappingURL=bootstrap.css.map */
