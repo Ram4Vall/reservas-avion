@@ -1,7 +1,9 @@
+
 function searchForm() {
   this.sForm = $("#FormReserva");
   this.vueloSearch;
   this.vuelosResult;
+  this.idVueloSelect;
   this.setUpForm();
 }
 
@@ -92,14 +94,12 @@ searchForm.prototype.filterOrigen = function(element) {
   return element.numVuelo.codAeropuertoSalida.nombre == searchFlightForm.vueloSearch.codPuertoSalida;
 }
 searchForm.prototype.filterDestino = function(element) {
+  console.log(searchFlightForm.vueloSearch.codPuertoLlegada);
+  console.log(element.numVuelo.codAeropuertoLlegada.nombre);
   return element.numVuelo.codAeropuertoLlegada.nombre == searchFlightForm.vueloSearch.codPuertoLlegada;
 }
 searchForm.prototype.filterPrecio = function(element) {
   return element.numVuelo.precio <= searchFlightForm.vueloSearch.precioMax;
-}
-searchForm.prototype.filterDestino = function(element) {
-  return element.numVuelo.codAerolinea.codAerolinea == searchFlightForm.vueloSearch.codAerolinea;
-
 }
 searchForm.prototype.setAerolineasSelect = function() {
   $.ajax({
@@ -182,7 +182,12 @@ searchForm.prototype.validateTarjeta = function(campo) {
     return false;
   }
 }
+searchForm.prototype.filterIdVuelo = function(elemento){
+  return elemento.idVuelo==searchFlightForm.idVueloSelect;
+}
 searchForm.prototype.comprarVuelo = function(idVuelo,precio) {
+  this.idVueloSelect = idVuelo;
+  var thisVuelo = this.vuelosResult.filter(this.filterIdVuelo);
   var validated;
   var nombre = $("#nombre"+idVuelo);
   var apellidos = $("#apellidos"+idVuelo);
@@ -204,20 +209,25 @@ searchForm.prototype.comprarVuelo = function(idVuelo,precio) {
       "telefono": $(telefono).val(),
       "tarjeta": $(tarjeta).val(),
       "importe": precio,
-      "idVuelo": idVuelo
+      "idVuelo": thisVuelo
     }
     console.log(reserva);
     var strReserva = JSON.stringify(reserva);
     console.log(strReserva)
-      /*$.ajax({
+      $.ajax({
         url: "/ReservasRS/webresources/reserva",
         type: "POST",
-        data: reserva,
+        headers:{
+          'Accept':'application/json',
+          'Content-Type':'application/json'
+        },
+        data: strReserva,
+        dataType: "json",
         crossdomain: true,
         success: function() {
           alert("Envío correcto");
         }
-      });*/
-    $.post("/ReservasRS/webresources/reserva", strReserva);
+      });
+    //$.post("/ReservasRS/webresources/reserva", strReserva);
   }
 }
